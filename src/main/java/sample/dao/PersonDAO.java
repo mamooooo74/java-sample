@@ -14,7 +14,7 @@ public class PersonDAO {
 	public static List<Person> findAll() throws ClassNotFoundException, SQLException{
 		List<Person> persons = new ArrayList<>();
 		Connection con = DBConector.getConnect();
-		PreparedStatement pstmt = con.prepareStatement("SELECT id, name, email, password FROM sample");
+		PreparedStatement pstmt = con.prepareStatement("SELECT id, name, email, password FROM person");
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			Person person = new Person();
