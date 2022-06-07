@@ -26,4 +26,12 @@ public class PersonDAO {
 		}
 		return persons;
 	}
+	public static int insert(Person person) throws ClassNotFoundException, SQLException {
+		Connection con = DBConector.getConnect();
+		PreparedStatement pstmt = con.prepareStatement("INSERT INTO person (name, email, password ) VALUES(?, ?, ?)");
+		pstmt.setString(1, person.getName());
+		pstmt.setString(2, person.getEmail());
+		pstmt.setString(3, person.getPassword());
+		return pstmt.executeUpdate();
+	}
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>All Person</title>
 </head>
 <body>
 	<table border="1">
@@ -31,5 +31,14 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<form action="Insert.action" method="post">
+		<label>名前:</label>
+		<input type="text" name="name">
+		<label>email</label>
+		<input type="email" name="email">
+		<label>パスワード:</label>
+		<input type="password" name="password">
+		<button type="submit">登録</button>
+	</form>
 </body>
 </html>

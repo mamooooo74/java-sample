@@ -6,6 +6,9 @@ public class Person implements Serializable {
 	private int id;
 	private String name;
 	private String email;
+	public Person() {
+		super();
+	}
 	private String password;
 	public int getId() {
 		return id;
