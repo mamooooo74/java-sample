@@ -2,7 +2,6 @@ package sample.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,30 +25,20 @@ public class PersonController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		try {
 			String path = request.getServletPath().substring(1);
 			String name = path.replace(".a", "A").replace("/", ".");
 			Action action=(Action)Class.forName("sample."+name).getConstructor().newInstance();
-			String url = action.execute(request, response);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-			dispatcher.forward(request, response);
+			action.execute(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		doGet(request, response);
+		response.sendRedirect("/list");
 	}
 
 }

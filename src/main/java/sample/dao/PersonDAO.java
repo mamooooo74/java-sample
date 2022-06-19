@@ -34,4 +34,10 @@ public class PersonDAO {
 		pstmt.setString(3, person.getPassword());
 		return pstmt.executeUpdate();
 	}
+	public static int delete(Person person) throws ClassNotFoundException, SQLException {
+		Connection con = DBConector.getConnect();
+		PreparedStatement pstmt = con.prepareStatement("DELETE FROM person WHERE id = ?");
+		pstmt.setInt(1, person.getId());
+		return pstmt.executeUpdate();
+	}
 }

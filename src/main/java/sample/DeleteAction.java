@@ -7,15 +7,13 @@ import sample.dao.PersonDAO;
 import sample.model.Person;
 import sample.tool.Action;
 
-public class InsertAction extends Action {
+public class DeleteAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Person person = new Person();
-		person.setName(request.getParameter("name"));
-		person.setEmail(request.getParameter("email"));
-		person.setPassword(request.getParameter("password"));
-		PersonDAO.insert(person);
+		person.setId(Integer.parseInt(request.getParameter("id")));
+		PersonDAO.delete(person);
 	}
 
 }
